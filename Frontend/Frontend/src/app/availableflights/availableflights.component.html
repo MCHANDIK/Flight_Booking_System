@@ -1,0 +1,84 @@
+<!-- <!DOCTYPE html>
+<html>
+<app-navbaruser></app-navbaruser>
+<body style="background-color: rgb(12, 44, 28); height: 1000px; margin-top: -20px;">
+    <div class="container">
+      <h2 style="text-align: center; font:bold ; background-color: rgb(21, 55, 83); color: coral; margin-top: 20px;">List of Flights Available</h2>
+      <table class="table table-striped" style="background-color: rgb(159, 176, 168);">
+          <thead style="color: rgb(128, 158, 70); background-color: lightblue;">
+              <tr>
+                  <th>Flight No</th>
+                  <th>Flight Name</th>
+                  <th>Flight From</th>
+                  <th>Flight To</th>
+                  <th>Fare</th>
+                  <th>Seats Available</th>
+                  <th>Date</th>
+                  <th>Time</th> 
+                  <th>Actions</th>     
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let flight of flights">
+            <td>{{flight.flightNo}}</td>
+            <td>{{flight.flightName}}</td>
+            <td>{{flight.flightFrom}}</td>
+            <td>{{flight.flightTo}}</td>
+            <td>{{flight.fare}}</td>
+            <td>{{flight.seats}}</td>
+            <td>{{flight.date}}</td>
+            <td>{{flight.time}}</td>
+            <td>
+              <button (click)="bookTicket(flight.flightNo)" class="btn btn-info">BookTicket</button>
+            </tr>
+          </tbody>
+      </table>
+      </div>
+    
+    </body>
+      </html> -->
+      <!DOCTYPE html>
+<html>
+<head>
+ 
+</head>
+<app-navbaruser></app-navbaruser>
+<body style="background-color: rgb(12, 44, 28); height: 1000px; margin-top: -20px;">
+    <div class="container">
+        <h2 class="header">List of Flights Available</h2>
+        <table class="table table-striped table-custom">
+            <thead>
+                <tr>
+                    <th>Flight No</th>
+                    <th>Flight Name</th>
+                    <th>Flight From</th>
+                    <th>Flight To</th>
+                    <th>Fare</th>
+                    <th>Seats Available</th>
+                    <th>Select seats</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let flight of flights">
+                    <td>{{flight.flightNo}}</td>
+                    <td>{{flight.flightName}}</td>
+                    <td>{{flight.flightFrom}}</td>
+                    <td>{{flight.flightTo}}</td>
+                    <td>{{flight.fare | currency:'USD'}}</td>
+                    <td>{{flight.seats}}</td>
+                    <td>{{flight.date}}</td>
+                    <td>{{flight.time}}</td>
+                    <td>
+                        <button (click)="bookTicket(flight.flightNo)" class="btn btn-info">Book Ticket</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
+
+

@@ -1,0 +1,73 @@
+
+<body class="bg">
+  <div class="Head">
+    <div class="navbar">
+ 
+      <div class="left">
+          <div class="image">
+              <img src="\assets\pngegg-removebg-preview.png">
+          </div>
+ 
+          <div class="logo">
+              <h3>Sky High</h3>
+          </div>
+      </div>
+ 
+      <div class="right">
+          <div class="buttons">
+              <ul>
+                <li><a class="ahome" routerLink="/home">Home</a></li>
+                <br>
+                <li><a routerLink='/userreg'>New User</a></li>
+                <br>
+                <li><a routerLink='/userLogin'>User-Login</a></li>
+                <br>
+                <li><a routerLink='/AdminLogin'>Admin-Login</a></li>
+                <br>
+                <li><a routerLink='/searchflights'>Flight-Schedule</a></li>
+              </ul>
+          </div>
+      </div>
+    </div>
+
+    
+<div class="container" style="padding-left: 400px;" >
+  <div class="row">
+    <div class="col-sm-5 col-md-4 col-lg-5 mx-auto">
+      <div class="card border-0 shadow rounded-3 my-5">
+        <div class="card-body p-4 p-sm-5">
+          <h5 class="card-title text-center mb-5 fw-light fs-5">ADMIN LOG-IN</h5>
+          <form [formGroup]="adminlog" (ngSubmit)="validate()">
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="floatingInput"  formControlName="username">
+              <label for="floatingInput">User Name</label>
+              <span style="color: red;" class="error" *ngIf="adminlog.controls['username'].touched && adminlog.controls['username'].errors"> *Username is required*
+             </span>
+            </div>
+            <div class="form-floating mb-3">
+              <input type="password" class="form-control" id="floatingPassword" formControlName="password">
+              <label for="floatingPassword">Password</label>
+             
+              <span style="color: red;" class="error" *ngIf="adminlog.controls['password'].touched && adminlog.controls['password'].errors"> *Password is required
+             </span>
+             <span class="show-password">
+               <br>
+               <input type="checkbox" id="showPassword" (change)="togglePasswordVisibility()">
+               Show password
+             </span>
+            </div>
+            <div class="d-grid">
+              <button type="submit" class="btn btn-primary" >Login</button>
+            </div>
+          </form>
+      </div>
+    </div>
+  </div>
+</div>
+       
+</div>
+
+
+
+
+

@@ -1,0 +1,98 @@
+@keyframes light-pass {
+    0% {
+      background-position: 100% 0%;
+    }
+    100% {
+      background-position: 0% 0%;
+    }
+  }
+ 
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background: linear-gradient(135deg, rgba(235, 236, 236, 0.6), rgba(14, 194, 244, 0.6), rgba(255, 255, 255, 0.6));
+    background-size: 200% 100%;
+    animation: light-pass 3s infinite linear;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
+ 
+  .left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    width: 30%;
+  }
+ 
+  .image {
+    width: 30%;
+    height: 100px;
+  }
+ 
+  .image img {
+    width: 100%;
+    height: 100%;
+  }
+ 
+  .logo h3 {
+    font-size: 24px;
+    font-weight: 550;
+    margin-top: 1.5rem;
+    font-family: 'Times New Roman', Times, serif;
+    text-transform: uppercase;
+    color: black;
+  }
+ 
+  .buttons {
+    margin-top: 2rem;
+  }
+ 
+ 
+ul {
+    list-style-type: none;
+    padding: 0px;
+    display: flex;
+    flex-direction: row;
+  }
+ 
+  li a {
+    display: block;
+    color: #000;
+    font-size: 15px;
+    padding: 10px 20px;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+  }
+ 
+  li a.active {
+    background-color: #04AA6D;
+    color: white;
+  }
+ 
+  a.ahome {
+    text-align: center;
+    color: rgb(238, 230, 230);
+  }
+ 
+  li a:hover:not(.active) {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border-radius: 5px;
+  }
+ 
+ 
+.mt-5 {
+        margin-top: 0rem !important;
+    }
+ 
+:host ::ng-deep
+    .p-card .p-card-body {
+        padding: 1.25rem;
+        background-color: darkcyan;
+        margin-top: -5px;
+    }

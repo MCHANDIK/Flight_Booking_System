@@ -1,0 +1,144 @@
+@keyframes light-pass {
+  0% {
+    background-position: 100% 0%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+ 
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  background: linear-gradient(135deg, rgba(235, 236, 236, 0.6), rgba(14, 194, 244, 0.6), rgba(255, 255, 255, 0.6));
+  background-size: 200% 100%;
+  animation: light-pass 3s infinite linear;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+ 
+.left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  width: 30%;
+}
+ 
+.image {
+  width: 30%;
+  height: 100px;
+}
+ 
+.image img {
+  width: 100%;
+  height: 100%;
+}
+ 
+.logo h3 {
+  font-size: 24px;
+  font-weight: 550;
+  margin-top: 1.5rem;
+  font-family: 'Times New Roman', Times, serif;
+  text-transform: uppercase;
+  color: black;
+}
+ 
+.buttons {
+  margin-top: 2rem;
+}
+ 
+.Head {
+  background: url('https://i.pinimg.com/originals/95/50/7b/95507b24e2a22b8eb9afc06d453693cd.gi');
+  height: 100%;
+  background-position: center;
+  background-repeat: repeat;
+  background-size: cover;
+  filter: brightness(1.1) contrast(1.2);
+  -webkit-filter: brightness(1.1) contrast(1.2);
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+}
+ 
+.matter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 30%;
+}
+.matter:hover {
+    transform: translateY(-10px); /* Moves the .matter div up on hover */
+}
+ 
+.matter h2 {
+  font-size: 39px;
+  color: black;
+  text-transform: capitalize;
+}
+ 
+.matter button {
+  width: 200px;
+  padding: 5px 20px;
+  font-size: 17px;
+  background-color: peru;
+  border-radius: 8px;
+  border: none;
+  color: white;
+  font-weight: 550;
+  outline: none;
+  box-shadow: rgba(241, 240, 240, 0.35) 0px 5px 15px;
+}
+ 
+.matter button:hover {
+  background-color: rgb(222, 175, 127);
+}
+ 
+ul {
+  list-style-type: none;
+  padding: 0px;
+  display: flex;
+  flex-direction: row;
+}
+
+li a {
+  display: block;
+  color: #000;
+  font-size: 15px;
+  padding: 10px 20px;
+  text-decoration: none;
+  transition: background-color 0.3s, color 0.3s;
+}
+ 
+li a.active {
+  background-color: #04AA6D;
+  color: white;
+}
+ 
+a.ahome {
+  text-align: center;
+  color: rgb(238, 230, 230);
+}
+ 
+li a:hover:not(.active) {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border-radius: 5px;
+}
+ 
+.card-title{
+  font-size: 24px;
+  font-weight: 550;
+  margin-top: 1.5rem;
+  font-family: 'Times New Roman', Times, serif;
+  text-transform: uppercase;
+  color: black;
+}
+ 
+.card-title:hover {
+  color: #000; /* Change color to black on hover */
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.8); /* Add glow effect */
+}

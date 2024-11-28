@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<app-navbaruser></app-navbaruser>
+
+<body style="background-color: rgb(12, 44, 28); height: 850px; margin-top: -20px;">
+    <div style="text-align: center">
+        <h3>{{message}}</h3>
+    </div>
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-sm-12" style="margin-top: 20px;">
+                <h2 class = "mt-3 mb-3"><b style="border-color: cyan; color:rgb(252, 252, 247);">Book Your Tickets Here:</b></h2>
+                <form #bookForm="ngForm" action="https://razorpay.com/payment-links/?utm_adgroup=brandsearch_pl&utm_gclid=Cj0KCQiAt8WOBhDbARIsANQLp945uCIOq0m1iLuf8NdfeU3qbgOLntbP8fFIMSYV0MEUK1eM2_VFSd4aAgtJEALw_wcB&utm_source=google&utm_medium=cpc&utm_campaign=brandsearch_generic&utm_term=razorpay%20payment%20link&hsa_kw=razorpay%20payment%20link&hsa_net=adwords&hsa_grp=127457516550&hsa_cam=13512997336&hsa_acc=9786800965&hsa_tgt=aud-368450393986:kwd-657795160756&hsa_ver=3&hsa_ad=527529476109&hsa_mt=p&hsa_src=g&gclid=Cj0KCQiAt8WOBhDbARIsANQLp945uCIOq0m1iLuf8NdfeU3qbgOLntbP8fFIMSYV0MEUK1eM2_VFSd4aAgtJEALw_wcB">
+                    <fieldset>
+
+                        <div class="form-group">
+                            <label style="color:indigo;" for="name">Passenger Name* :</label>
+                            <input #name="ngModel" [class.is-invalid]="name.invalid && name.touched" class="form-control" type="text" [(ngModel)]="book.name" name="name" id="name" required
+                                placeholder="Enter Passenger Name" />
+                                <small class="text-danger" [class.d-none]="name.valid || name.untouched">*Name is required</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phnnumber">Contact* :</label>
+                            <input #phnnumber="ngModel" pattern="^((\\+91-?)|0)?[0-9]{10}$" required [class.is-invalid]="phnnumber.invalid && phnnumber.touched" class="form-control" type="tel" [(ngModel)]="book.phnnumber" name="phnnumber" id="phnnumber" required
+                                placeholder="Enter Mobile Number" />
+
+                                <div *ngIf="phnnumber.errors && (phnnumber.valid || phnnumber.touched)">
+                                    <small class="text-danger" *ngIf="phnnumber.errors['required']">*Phone no. is required</small>
+                                    <small class="text-danger" *ngIf="phnnumber.errors['pattern']">*Phone no. must contain numbers with 10 digits only</small>
+                                  </div>
+                        </div>
+<!--pattern="^[0-9]*$" "^\d{10}$"-->
+                        <div class="form-group">
+                            <label for="email">E-mail* :</label>
+                            <input #email="ngModel" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required [class.is-invalid]="email.invalid && email.touched" class="form-control" type="text" [(ngModel)]="book.email" name="email" id="email" required
+                                placeholder="Enter E-mail Address" />
+
+                                <div *ngIf="email.errors && (email.valid || email.touched)">
+                                    <small class="text-danger" *ngIf="email.errors['required']">*E-mail is required</small>
+                                    <small class="text-danger" *ngIf="email.errors['pattern']">*E-mail must include @,.extension</small>
+                                  </div>
+                        </div>
+    
+    
+                        <div class="form-group">
+                            <label for="flightNo">Flight No :</label>
+                            <input class="form-control" type="text" [(ngModel)]="flight.flightNo" name="flightNo" id="flightNo" required
+                                placeholder="Enter Flight No" readonly/>
+                        </div>
+    
+                        <div class="form-group">
+                            <label for="flightName">Flight Name :</label>
+                            <input required type="text" [(ngModel)]="flight.flightName" name="flightName" id="flightName"
+                                class="form-control" maxlength="28" placeholder="Enter Flight Name" readonly/>
+                        </div>
+    
+                        <div class="form-group">
+                            <label for="flightFrom">Source :</label>
+                            <input class="form-control" type="text" [(ngModel)]="flight.flightFrom" name="flightFrom" id="flightFrom"
+                                placeholder="Enter Source" required readonly/>
+                        </div>
+    
+                        <div class="form-group">
+                            <label for="flightTo">Destination :</label>
+                            <input class="form-control" required type="text" [(ngModel)]="flight.flightTo" name="flightTo"
+                                id="flightTo" placeholder="Enter Destination" readonly/>
+                        </div>
+
+                        <!-- <div class="form-group">
+                            <label for="date">Date* :</label>
+                            <input #date="ngModel" [class.is-invalid]="date.invalid && date.touched" class="form-control" required type="date" [(ngModel)]="book.date" name="date"
+                                id="date" placeholder="Choose Date" />
+                                <small class="text-danger" [class.d-none]="date.valid || date.untouched">*You must select date</small>
+                        </div> -->
+                        <div class="form-group">
+                            <label for="date">Date*</label>
+                            <input class="form-control" required type="text" [(ngModel)]="flight.date" name="date"
+                                id="date" placeholder="Enter Date" readonly/>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="time">Time :</label>
+                            <input class="form-control" required type="text" [(ngModel)]="flight.time" name="time"
+                                id="time" placeholder="Enter Time" readonly/>
+                        </div>
+                        
+                        <!-- <div class="form-group">
+                            <label for="totalseats">No.of.Seats :</label>
+                            <input class="form-control" required type="text" [(ngModel)]="book.totalseats" name="totalseats"
+                                id="totalseats" placeholder="No.of Seats" />
+                        </div> -->
+
+                        <!-- <div class="form-group">
+                            <label for="fare">Fare :</label>
+                            <input class="form-control" required type="text" [(ngModel)]="book.fare" name="fare"
+                                id="fare" placeholder="Total Fare" />
+                        </div> -->
+                        
+
+                        <!-- <div class="form-group">
+                            <label for="fare">Fare</label>
+                            <input class="form-control" required type="text" [(ngModel)]="flight.fare" name="fare"
+                                id="fare" placeholder="Enter Fare" />
+                        </div> -->
+
+                        <!-- <div class="form-group">
+                            <label for="time">Time</label>
+                            <input class="form-control" required type="text" [(ngModel)]="flight.time" name="time"
+                                id="time" placeholder="Enter Time" />
+                        </div> -->
+                        <br>
+                        <div class="form-group">
+                            <input [disabled]="bookForm.form.invalid" class="btn btn-success" type="submit" name="submit_reg" value="Book Now" (click)="bookTicket()">
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+    
+        </div>
+    </div>
+    </body>
+    </html>
+
+
+<!-- <!DOCTYPE html>
+<html>
+<app-navbaruser></app-navbaruser>
+
+<body style="background-color: rgb(12, 44, 28); height: 750px; margin-top: -20px;">
+    <div style="text-align: center">
+        <h3>{{message}}</h3>
+    </div>
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-sm-12" style="margin-top: 20px;">
+                <h2 class = "mt-3 mb-3"><b style="border-color: cyan; color:rgb(158, 51, 158);">Book Your Tickets Here:</b></h2>
+                
+                <form [formGroup]="bookingform">
+                    <fieldset>
+
+                        <div>
+                            <label style="color:indigo;" for="name">Passenger Name :</label>
+                            <input formControlName="passengername" type="text" name="name" id="name" required
+                                placeholder="Enter Passenger Name" />
+                        </div>
+
+                        <div>
+                            <label for="phnnumber">Contact :</label>
+                            <input formControlName="passengernumber" type="text" name="phnnumber" id="phnnumber" required
+                                placeholder="Enter Mobile Number" />
+                        </div>
+
+                        <div>
+                            <label for="email">E-mail :</label>
+                            <input formControlName="passengeremail" type="text" name="email" id="email" required
+                                placeholder="Enter E-mail Address" />
+                        </div>
+    
+    
+                        <div>
+                            <label for="flightNo">Flight No :</label>
+                            <input formControlName="passengerflightNo" type="text" name="flightNo" id="flightNo" required
+                                placeholder="Enter Flight No" />
+                        </div>
+    
+                        <div>
+                            <label for="flightName">Flight Name :</label>
+                            <input formControlName="passengerflightName" required type="text" name="flightName" id="flightName"
+                         maxlength="28" placeholder="Enter Flight Name" />
+                        </div>
+    
+                        <div>
+                            <label for="flightFrom">Source :</label>
+                            <input formControlName="passengerflightFrom" type="text" name="flightFrom" id="txt"
+                                placeholder="Enter Source" required />
+                            <div id="errLast"></div>
+                        </div>
+    
+                        <div>
+                            <label for="flightTo">Destination :</label>
+                            <input formControlName="passengerflightTo" required type="text" name="flightTo"
+                                id="flightTo" placeholder="Enter Destination" />
+                        </div>
+
+                        <div>
+                            <label for="date">Date :</label>
+                            <input formControlName="passengerdate" required type="date" name="date"
+                                id="date" placeholder="Enter Destination" />
+                        </div>
+                        
+                        <div>
+                            <label for="totalseats">No.of.Seats :</label>
+                            <input formControlName="passengertotalseats" required type="text" name="totalseats"
+                                id="totalseats" placeholder="No.of Seats" />
+                        </div>
+
+                         <br>
+                        <div>
+                            <input class="btn btn-success" type="submit" name="submit_reg" value="Book Now" (click)="bookTicket()">
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+    
+        </div>
+    </div>
+    </body>
+    </html> -->

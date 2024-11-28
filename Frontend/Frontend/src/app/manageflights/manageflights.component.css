@@ -1,0 +1,105 @@
+/* General Styles */
+body {
+    background: url('https://tse3.mm.bing.net/th/id/OIP.5af1YFTaoj8_2ciTjSBXkQHaE8?w=232&h=155&c=7&o=5&dpr=1.5&pid=1.20') no-repeat center center fixed; /* Add background image */
+    background-size: cover; /* Cover the entire background */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Container */
+.container {
+    background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent white background to show image */
+    padding: 40px;
+    max-width: 1000px;
+    margin: auto;
+    border-radius: 8px; /* Rounded corners */
+}
+
+/* Header Styles */
+.header {
+    text-align: center;
+    font-weight: 600;
+    background-color: #007bff; /* Primary blue */
+    color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    font-size: 24px; /* Increased font size for header */
+}
+
+/* Table Styles */
+.table-custom {
+    width: 100%;
+    max-width: 1200px; /* Adjust the maximum width to make the table larger */
+    border-collapse: collapse;
+    background-color: #ffffff; /* White background for table */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 20px; /* Add space below the table */
+}
+
+.table-custom th,
+.table-custom td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #dddddd;
+    font-size: 16px; /* Increase font size for table cells */
+}
+
+.table-custom th {
+    background-color: #343a40; /* Dark background for header */
+    color: #ffffff; /* White text for header */
+    font-weight: bold;
+    font-size: 16px; /* Increase font size for table headers */
+}
+
+.table-custom tbody tr:hover {
+    background-color: #f1f1f1; /* Subtle hover effect */
+    cursor: pointer;
+}
+
+.table-custom tbody tr:nth-child(even) {
+    background-color: #f9f9f9; /* Alternate row color */
+}
+
+/* Button Styling */
+.table-custom td .action-buttons {
+    display: flex; /* Display buttons in a flex container */
+    gap: 10px; /* Space between buttons */
+}
+
+.btn-primary,
+.btn-danger {
+    width: 100px; /* Increased width for both buttons */
+    padding: 12px 0; /* Adjust padding */
+    border-radius: 5px;
+    text-align: center;
+    font-size: 16px; /* Increased font size for buttons */
+    font-weight: bold;
+    margin-bottom: 0; /* Remove extra space below buttons */
+    cursor: pointer;
+    display: inline-block;
+}
+
+.btn-primary {
+    background-color: #007bff; /* Primary blue */
+    color: #ffffff;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+.btn-danger {
+    background-color: #dc3545; /* Red for delete */
+    color: #ffffff;
+    border: none;
+}
+
+.btn-danger:hover {
+    background-color: #c82333; /* Darker red on hover */
+}

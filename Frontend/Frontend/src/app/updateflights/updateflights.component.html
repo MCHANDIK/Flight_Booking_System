@@ -1,0 +1,74 @@
+<app-navbaradmin></app-navbaradmin>
+
+<body style="background-color: rgb(12, 44, 28); height: 821px; margin-top: -20px;">
+<div style="text-align: center">
+    <h3>{{message}}</h3>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 col-sm-12" style="margin-top: 20px;">
+            <h2 class = "mt-3 mb-3"><b style="border-color: cyan; color:rgb(158, 51, 158);">Update Flights Here:</b></h2>
+            <form #flightForm="ngForm">
+                <fieldset>
+
+                    <div class="form-group">
+                        <label for="flightNo">Flight No</label>
+                        <input #flightNo="ngModel" [class.is-invalid]="flightNo.invalid && flightNo.touched" class="form-control" type="text" [(ngModel)]="flight.flightNo" name="flightNo" id="flightNo" required
+                            placeholder="Enter Flight No" />
+                            <small class="text-danger" [class.d-none]="flightNo.valid || flightNo.untouched">*Flight No. is required</small>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="flightName">Flight Name</label>
+                        <input #flightName="ngModel" [class.is-invalid]="flightName.invalid && flightName.touched" required type="text" [(ngModel)]="flight.flightName" name="flightName" id="flightName"
+                            class="form-control phone" maxlength="28" placeholder="Enter Flight Name" />
+                            <small class="text-danger" [class.d-none]="flightName.valid || flightName.untouched">*Flight Name. is required</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="flightFrom">Source</label>
+                        <input #flightFrom="ngModel" [class.is-invalid]="flightFrom.invalid && flightFrom.touched" class="form-control" type="text" [(ngModel)]="flight.flightFrom" name="flightFrom" id="txt"
+                            placeholder="Enter Source" required />
+                        <div id="errLast"></div>
+                        <small class="text-danger" [class.d-none]="flightFrom.valid || flightFrom.untouched">*Flight Source is required</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="flightTo">Destination</label>
+                        <input #flightTo="ngModel" [class.is-invalid]="flightTo.invalid && flightTo.touched" class="form-control" required type="text" [(ngModel)]="flight.flightTo" name="flightTo"
+                            id="flightTo" placeholder="Enter Destination" />
+                            <small class="text-danger" [class.d-none]="flightTo.valid || flightTo.untouched">*Flight Destination is required</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="fare">Fare</label>
+                        <input #fare="ngModel" [class.is-invalid]="fare.invalid && fare.touched" class="form-control" required type="text" [(ngModel)]="flight.fare" name="fare"
+                            id="fare" placeholder="Enter Fare" />
+                            <small class="text-danger" [class.d-none]="fare.valid || fare.untouched">*Fare is required</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="seats">Seats</label>
+                        <input #seats="ngModel" [class.is-invalid]="seats.invalid && seats.touched" class="form-control" required type="text" [(ngModel)]="flight.seats" name="seats"
+                            id="seats" placeholder="No.of Seats" />
+                            <small class="text-danger" [class.d-none]="seats.valid || seats.untouched">*Seats is required</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="time">Time</label>
+                        <input #time="ngModel" [class.is-invalid]="time.invalid && time.touched" class="form-control" required type="text" [(ngModel)]="flight.time" name="time"
+                            id="time" placeholder="Enter Time" />
+                            <small class="text-danger" [class.d-none]="time.valid || time.untouched">*Flight time is required</small>
+                    </div>
+
+                    <div class="form-group">
+                        <input [disabled]="flightForm.form.invalid" class="btn btn-success" type="submit" name="submit_reg" value="Update Flight" (click)="updateFlight()">
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+
+    </div>
+</div>
+</body>

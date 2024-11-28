@@ -1,0 +1,43 @@
+ 
+
+  <app-navbaruser></app-navbaruser>
+  <p-card  style="background-color: lightblue;">
+   
+        <p-table [value]="bookings" responsiveLayout="scroll">
+            <ng-template pTemplate="header">
+                <tr>
+                  <th>PNR-ID</th>
+                  <th>Name</th>
+                  <th>Contact</th>
+                  <th>E-mail</th>
+                  <th>Flight No</th>
+                  <th>Flight Name</th>
+                  <th>Flight From</th>
+                  <th>Flight To</th>
+                  <th>Date</th>
+                  <th>Time</th>
+                  <th>Fare</th> 
+                  <th>Actions</th> 
+                     
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-bk>
+                <tr>
+                  <td>{{bk.pnrId}}</td>
+                  <td>{{bk.name}}</td>
+                  <td>{{bk.phnnumber}}</td>
+                  <td>{{bk.email}}</td>
+                  <td>{{bk.flightNo}}</td>
+                  <td>{{bk.flightName}}</td>
+                  <td>{{bk.flightFrom}}</td>
+                  <td>{{bk.flightTo}}</td>
+                  <td>{{bk.date}}</td>
+                  <td>{{bk.time}}</td>
+                  <td>{{bk.fare}}</td>
+                  <td>
+                    <button (click)="cancelTicket(bk.pnrId)" class="btn btn-info">Cancel Ticket</button>
+                  </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </p-card>

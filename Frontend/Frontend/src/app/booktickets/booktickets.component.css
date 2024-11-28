@@ -1,0 +1,11 @@
+fieldset {
+    border: thin solid #ccc; 
+    border-radius: 15px;
+    padding: 20px;
+    background: #fbfbfb;
+
+}
+.btn-success.disabled, .btn-success:disabled {
+    border-radius: 15px;
+}
+

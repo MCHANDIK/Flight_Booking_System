@@ -1,0 +1,190 @@
+<!-- <div class="container">
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="mobile">Mobile Number:</label>
+        <input
+          type="text"
+          id="mobile"
+          name="mobile"
+         
+          required
+        />
+      </div>
+      <button type="submit">Pay Now</button>
+    </form>
+  
+    <div *ngIf="error">
+      <p>Error: {{ error }}</p>
+    </div>
+  </div> -->
+  <div class="back" *ngIf="!flag">
+    <div class="container col-md-5">
+      
+      <form (ngSubmit)="addmobile()">
+          <div class="mb-3">
+              <label for="cropId" class="form-label" style="color:rgb(0, 255, 72);">User Name</label>
+              <input type="text" [(ngModel)]="mobile.username" class="form-control" id="username" name="username" placeholder="Enter User Name">
+          </div>
+          <div class="mb-3">
+              <label for="cropName" class="form-label" style="color:rgb(0, 255, 38);">Mobile Number</label>
+              <input type="text" [(ngModel)]="mobile.phoneNumber" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="+(91)">
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+     
+    </div>
+    </div>
+
+
+
+    <div class="container col-md-5"*ngIf="flag">
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        
+        <div class="mb-3">
+          <label for="cropId" class="form-label" style="color:rgb(255, 102, 0);">User Name</label>
+          <input type="text" [(ngModel)]="valid.username" class="form-control" id="username" name="username" placeholder="Enter User Name">
+      </div>
+      <div class="mb-3">
+          <label for="cropName" class="form-label" style="color:rgb(255, 123, 0);">Enter Otp</label>
+          <input type="text" [(ngModel)]="valid.otpNumber" class="form-control" id="otpNumber" name="otpNumber" placeholder="Enter Otp">
+      </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Pay Now</button>
+    </form>
+
+
+
+
+
+    <!-- <div class="back" *ngIf="flag">
+        <div class="container col-md-5">
+          <h1>Validate OTP</h1>
+          <form (ngSubmit)="otp()">
+              <div class="mb-3">
+                  <label for="cropId" class="form-label" style="color:rgb(255, 102, 0);">User Name</label>
+                  <input type="text" [(ngModel)]="valid.username" class="form-control" id="username" name="username">
+              </div>
+              <div class="mb-3">
+                  <label for="cropName" class="form-label" style="color:rgb(255, 123, 0);">Enter Otp</label>
+                  <input type="text" [(ngModel)]="valid.otpNumber" class="form-control" id="otpNumber" name="otpNumber">
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+         
+        </div>
+        </div> -->
+
+<!-- 
+  import { HttpClient } from '@angular/common/http';
+import { Component, HostListener, OnInit } from '@angular/core';
+import { OrderService } from '../order.service';
+import { Router } from '@angular/router';
+import { LoginPassengerService } from '../loginpassenger.service';
+
+@Component({
+  selector: 'app-payment',
+  templateUrl: './payment.component.html',
+  styleUrls: ['./payment.component.css']
+})
+export class PaymentComponent implements OnInit {
+
+  form: any = {
+    name: '',
+    email: '',
+    contact: ''
+  };        
+  totalPrice: any;
+  paymentId!: string;
+  error!: string;
+  result:any;
+
+  options: any = {
+    "key": "", 
+    "amount": "", 
+    "name": "Payment",
+    "description": "Web Development",
+    "image": "https://www.javachinna.com/wp-content/uploads/2020/02/android-chrome-512x512-1.png",
+    "order_id": "",
+    "handler": (response: any) => {
+      const event = new CustomEvent("payment.success", 
+        {
+          detail: response,
+          bubbles: true,
+          cancelable: true
+        }
+      );	  
+      window.dispatchEvent(event);
+    },
+    "prefill": {
+      "name": "",
+      "email": "",
+      "contact": ""
+    },
+    "notes": {
+      "address": ""
+    },
+    "theme": {
+      "color": "#3399cc"
+    }
+  };
+  bookings: any[] = [];
+  constructor(private http: HttpClient, private orderService: OrderService,private router: Router,
+    private service: LoginPassengerService
+  ) { }
+
+  
+  ngOnInit() :void{
+   
+    let response = this.service.getTicket();
+    response.subscribe((data: any) => {
+      this.bookings = data;
+        console.log('Bookings:', this.bookings);
+      
+      if (this.bookings.length > 0) {
+        console.log('Fare:', this.bookings[0].fare); // Access the fare of the first booking
+      } else {
+        console.log('No bookings available');
+      }
+ 
+      
+    this.totalPrice =this.bookings[0].fare;
+      
+  });
+  
+  }
+
+  onSubmit(): void {
+    this.paymentId = ''; 
+    this.error = ''; 
+    this.orderService.createOrder(this.totalPrice).subscribe(
+      data => {
+        this.options.key = data.secretId;
+        this.options.order_id = data.razorpayOrderId;
+        this.options.amount = data.applicationFee; // in paise
+        this.options.prefill.name = this.form.name;
+        this.options.prefill.email = this.form.email;
+        this.options.prefill.contact = this.form.contact;
+
+        const razorpayInstance = new (window as any).Razorpay(this.options);
+        razorpayInstance.open();
+
+        razorpayInstance.on('payment.failed', (response: any) => {    
+          // Store this information in the server or log it
+          console.log(response);
+          this.error = response.error.reason;
+        });
+      },
+      err => {
+        this.error = err.error.message;
+      }
+    );
+  }
+
+  @HostListener('window:payment.success', ['$event']) 
+  onPaymentSuccess(event: { detail: any; }): void {
+    console.log(event.detail);
+    // Handle payment success logic here
+    this.router.navigate(['/bookingdetails']);  // Redirect to success page
+  }
+} -->

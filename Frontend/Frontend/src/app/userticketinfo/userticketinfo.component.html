@@ -1,0 +1,216 @@
+<!-- 
+<!DOCTYPE html>
+<html>
+    <app-navbaruser></app-navbaruser>
+  <body style="background-color: rgb(12, 44, 28); height: 540px; margin-top: -20px;">
+<div class="container">
+  <h2 style="text-align: center; font:bold ; background-color: rgb(21, 55, 83); color: coral; margin-top: 20px;">Your Booking Info</h2>
+ <div style="margin-left: -70px;">
+  <table class="table table-striped" style="background-color: rgb(127, 173, 150);">
+      <thead style="color: darkolivegreen; background-color: lightblue;">
+          <tr>
+        
+              <th>Name</th>
+              <th>Contact</th>
+              <th>E-mail</th>
+              <th>Flight No</th>
+              <th>Flight Name</th>
+              <th>Flight From</th>
+              <th>Flight To</th>
+              <th>Date</th>
+              <th>Time</th>
+              <th>Fare</th> 
+              <th>Actions</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let bk of bookings">
+            
+            <td>{{bk.name}}</td>
+            <td>{{bk.phnnumber}}</td>
+            <td>{{bk.email}}</td>
+            <td>{{bk.flightNo}}</td>
+            <td>{{bk.flightName}}</td>
+            <td>{{bk.flightFrom}}</td>
+            <td>{{bk.flightTo}}</td>
+            <td>{{bk.date}}</td>
+            <td>{{bk.time}}</td>
+            <td>{{bk.fare}}</td>
+        <td>
+          <button onclick="window.location.href='https://paytm.me/4dsg-0z'" class="btn btn-info">Pay Now</button>
+        </tr>
+      </tbody>
+  </table>
+  </div>
+  </div>
+
+</body>
+  </html> -->
+
+
+  <!-- <!DOCTYPE html>
+<html>
+    <app-navbaruser></app-navbaruser>
+  <body style="background-color: rgb(205, 236, 235);">
+<div class="container" style=" padding-top: 20px;">
+  <div class="card" style="width: 28rem;margin: auto; margin-top: 20px;">
+    <div class="card-header">
+        Your Booking Info
+      </div>                                                                                                                    
+    <div class="card-body">
+      <label>Name:</label><b>{{bookings[0].name}}</b><br>
+      <label>Contact:</label><b>{{bookings[0].phnnumber}}</b><br>
+      <label>E-mail:</label><b>{{bookings[0].email}}</b><br>
+      <label>Flight No:</label><b>{{bookings[0].flightNo}}</b><br>
+      <label>Flight Name:</label><b>{{bookings[0].flightName}}</b><br>
+      <label>Flight From:</label><b>{{bookings[0].flightFrom}}</b><br>
+      <label>Flight To:</label><b>{{bookings[0].flightTo}}</b><br>
+      <label>Date:</label><b>{{bookings[0].date}}</b><br>
+      <label>Time:</label><b>{{bookings[0].time}}</b><br>
+      <label>Fare:</label><b>{{bookings[0].fare}}</b><br>
+      <div style="margin: auto;">
+      </div>
+    </div>
+    <div class="card-footer text-muted">
+        <button onclick="window.location.href='https://paytm.me/4dsg-0z'" class="btn btn-info">Pay Now</button>
+
+      </div>
+  </div>
+  </div>
+
+</body>
+  </html> -->
+
+
+  <!DOCTYPE html>
+  <html lang="en">
+  
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Booking Info</title>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+          integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+          integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+          integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </head>
+  
+  <body style="background-color: rgb(12, 44, 28);">
+      <app-navbaruser></app-navbaruser>
+  
+      <div class="container" style="padding-top: 20px;">
+          <div class="card" style="width: 28rem; margin: auto; padding-top: 1rem;">
+              <div class="card-header">
+                  <div class="d-flex justify-content-center">Your Booking Info</div>
+              </div>
+              <div class="card-body">
+                  <div class="container">
+                      <div class="row">
+                          <div class="col-sm">
+                              <label>Name</label>
+                          </div>
+                          <div class="col-sm">:</div>
+                          <div class="col-sm">
+                              <b>{{ bookings?.[0]?.name || 'N/A' }}</b>
+                          </div>
+                      </div>
+                      <div class="row">
+                          <div class="col-sm">
+                              <label>Contact</label>
+                          </div>
+                          <div class="col-sm">:</div>
+                          <div class="col-sm">
+                              <b>{{ bookings?.[0]?.phnnumber || 'N/A' }}</b>
+                          </div>
+                      </div>
+                      <div class="row">
+                          <div class="col-sm">
+                              <label>E-mail</label>
+                          </div>
+                          <div class="col-sm">:</div>
+                          <div class="col-sm">
+                              <b>{{ bookings?.[0]?.email || 'N/A' }}</b>
+                          </div>
+                      </div>
+                      <div class="row">
+                          <div class="col-sm">
+                              <label>Flight No</label>
+                          </div>
+                          <div class="col-sm">:</div>
+                          <div class="col-sm">
+                              <b>{{ bookings?.[0]?.flightNo || 'N/A' }}</b>
+                          </div>
+                      </div>
+                      <div class="row">
+                          <div class="col-sm">
+                              <label>Flight Name</label>
+                          </div>
+                          <div class="col-sm">:</div>
+                          <div class="col-sm">
+                              <b>{{ bookings?.[0]?.flightName || 'N/A' }}</b>
+                          </div>
+                      </div>
+                      <div class="row">
+                          <div class="col-sm">
+                              <label>Flight From</label>
+                          </div>
+                          <div class="col-sm">:</div>
+                          <div class="col-sm">
+                              <b>{{ bookings?.[0]?.flightFrom || 'N/A' }}</b>
+                          </div>
+                      </div>
+                      <div class="row">
+                          <div class="col-sm">
+                              <label>Flight To</label>
+                          </div>
+                          <div class="col-sm">:</div>
+                          <div class="col-sm">
+                              <b>{{ bookings?.[0]?.flightTo || 'N/A' }}</b>
+                          </div>
+                      </div>
+                      <div class="row">
+                          <div class="col-sm">
+                              <label>Date</label>
+                          </div>
+                          <div class="col-sm">:</div>
+                          <div class="col-sm">
+                              <b>{{ bookings?.[0]?.date || 'N/A' }}</b>
+                          </div>
+                      </div>
+                      <div class="row">
+                          <div class="col-sm">
+                              <label>Time</label>
+                          </div>
+                          <div class="col-sm">:</div>
+                          <div class="col-sm">
+                              <b>{{ bookings?.[0]?.time || 'N/A' }}</b>
+                          </div>
+                      </div>
+                      <div class="row">
+                          <div class="col-sm">
+                              <label>Fare</label>
+                          </div>
+                          <div class="col-sm">:</div>
+                          <div class="col-sm">
+                            <b>{{ bookings?.[0]?.fare | currency:'USD':'symbol' || 'N/A' }}</b>
+
+                              <!-- <b>{{ bookings?.[0]?.fare || 'N/A' }}</b> -->
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="card-footer text-muted">
+                  <div class="d-flex justify-content-center">
+                      <button routerLink="/pay" class="btn btn-info">Pay Now</button>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </body>
+  
+  </html>
+  
